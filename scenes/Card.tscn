@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcwuwo8m0s6x6"]
+
+[ext_resource type="Script" path="res://scenes/Card.gd" id="1_rwfk6"]
+[ext_resource type="Texture2D" uid="uid://cqj0p8vcq0yp5" path="res://img/food.png" id="2_223mh"]
+[ext_resource type="Texture2D" uid="uid://p3cenahycvww" path="res://img/weapon.png" id="3_21ut2"]
+[ext_resource type="Texture2D" uid="uid://dy2rn8dbjpnbm" path="res://img/wood2.jpeg" id="4_g65g8"]
+[ext_resource type="Texture2D" uid="uid://b7jtdds3nseai" path="res://img/research.png" id="5_6fwq2"]
+
+[node name="Card" type="TextureButton"]
+custom_minimum_size = Vector2(256, 256)
+offset_right = 128.0
+offset_bottom = 128.0
+script = ExtResource("1_rwfk6")
+
+[node name="FoodTexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_223mh")
+
+[node name="WeaponTexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_21ut2")
+
+[node name="WoodTexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_g65g8")
+
+[node name="CureTexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_6fwq2")

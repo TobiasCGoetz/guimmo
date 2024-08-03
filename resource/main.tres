@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://jw6hewfowpqt"]
+
+[ext_resource type="Script" path="res://resource/main.gd" id="1_k06yj"]
+
+[resource]
+script = ExtResource("1_k06yj")
+playerName = ""
+accessToken = ""
