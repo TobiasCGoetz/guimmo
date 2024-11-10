@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2wqft6dcjeq"]
+[gd_scene load_steps=13 format=3 uid="uid://b2wqft6dcjeq"]
 
 [ext_resource type="Script" path="res://scenes/Tile.gd" id="1_1v8f6"]
 [ext_resource type="Texture2D" uid="uid://cx5ox27oh81gb" path="res://img/arrow.png" id="2_pmye8"]
 [ext_resource type="Texture2D" uid="uid://0pldcspuvrec" path="res://img/forest.jpg" id="2_skcec"]
 [ext_resource type="Texture2D" uid="uid://ce2vpxcavha85" path="res://img/city.jpg" id="3_x4nrx"]
 [ext_resource type="Texture2D" uid="uid://dq2yoplfd5xwu" path="res://img/farm.jpg" id="4_3llaw"]
+[ext_resource type="Texture2D" uid="uid://cvb1dtpvijxnk" path="res://img/survivor.png" id="4_ntuq7"]
+[ext_resource type="Texture2D" uid="uid://boorylxpjml0b" path="res://img/skull.png" id="5_1w4qo"]
 [ext_resource type="Texture2D" uid="uid://ceeaton7tik5c" path="res://img/laboratory.png" id="5_hg7na"]
 [ext_resource type="Texture2D" uid="uid://khxja55kgseb" path="res://img/edge.png" id="6_a61g5"]
 [ext_resource type="Texture2D" uid="uid://b8r1pijmsx2og" path="res://img/empty.jpg" id="7_bjwb0"]
@@ -164,19 +166,29 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="playerIcon" type="Sprite2D" parent="."]
-position = Vector2(241, 15)
+position = Vector2(224, 32)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_ntuq7")
 
 [node name="playerCount" type="Label" parent="playerIcon"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+pivot_offset = Vector2(256, 256)
 metadata/_edit_use_anchors_ = true
 
 [node name="zombieIcon" type="Sprite2D" parent="."]
-position = Vector2(15, 15)
+position = Vector2(32, 32)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_1w4qo")
 
 [node name="zombieCount" type="Label" parent="zombieIcon"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+pivot_offset = Vector2(256, 256)
 
 [node name="ForestTexture" type="TextureRect" parent="."]
 visible = false
