@@ -164,6 +164,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="playerIcon" type="Sprite2D" parent="."]
+position = Vector2(241, 15)
 
 [node name="playerCount" type="Label" parent="playerIcon"]
 offset_right = 40.0
@@ -171,6 +172,7 @@ offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
 
 [node name="zombieIcon" type="Sprite2D" parent="."]
+position = Vector2(15, 15)
 
 [node name="zombieCount" type="Label" parent="zombieIcon"]
 offset_right = 40.0

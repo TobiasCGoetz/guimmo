@@ -107,5 +107,3 @@ func _ready():
 	updateData()
 	
 	pass
-
-
