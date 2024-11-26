@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://o4s5n31crwtq"]
+[gd_scene load_steps=5 format=3 uid="uid://o4s5n31crwtq"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_andfe"]
 [ext_resource type="PackedScene" uid="uid://b2wqft6dcjeq" path="res://scenes/Tile.tscn" id="1_px73o"]
 [ext_resource type="PackedScene" uid="uid://bcwuwo8m0s6x6" path="res://scenes/Card.tscn" id="3_ptgvo"]
+[ext_resource type="Script" path="res://gommo_api.gd" id="4_b17uu"]
 
 [node name="Webmo" type="Node2D"]
 script = ExtResource("1_andfe")
@@ -74,3 +75,6 @@ layout_mode = 2
 
 [node name="Card3" parent="rootContainer/Cards" instance=ExtResource("3_ptgvo")]
 layout_mode = 2
+
+[node name="gommoApi" type="Node" parent="."]
+script = ExtResource("4_b17uu")
