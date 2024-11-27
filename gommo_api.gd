@@ -5,7 +5,6 @@ extends Node
 
 var srv = serverURL + ":" + str(serverPort)
 var playerId : String = ""
-var playerToken : String = ""
 
 signal getPlayerDone(alive : bool, cards : Array, direction : String)
 signal getSurroundingsDone(surroundingsDict : Dictionary)
@@ -22,25 +21,12 @@ enum call {
 	GET_CONFIG
 }
 
-#POST("/player/:name")
-#GET("/player/{id}")
-#GET("/player/{id}/surroundings")
-#PUT("/player/{id}/direction/{dir}")
-#PUT("/player/{id}/consume/{card}")
-#PUT("/player/{id}/discard/{card}")
-#PUT("/player/{id}/play/{card}")
-#GET("/config/turnTimer")
-#GET("/config/turnLength")
-#GET("/config/mapSize")
-#GET("/config/hasWon")
-#GET("/config")
-
 func postPlayer(name : String):
 	_web_request(call.POST_PLAYER, name)
 	pass
 
 func getPlayer():
-	print("queryPlayer->playerToken: ", playerToken)
+	print("queryPlayer->playerId: ", playerId)
 	_web_request(call.GET_PLAYER, "")
 	pass
 
