@@ -14,7 +14,7 @@ signal getConfigDone(turnTime : int, haveWon : bool)
 enum call {
 	POST_PLAYER,
 	GET_PLAYER,
-	GET_PLAYER_SURROUNDINGS,
+	GET_SURROUNDINGS,
 	PUT_PLAYER_DIRECTION,
 	PUT_PLAYER_CONSUME,
 	PUT_PLAYER_DISCARD,
@@ -34,6 +34,34 @@ enum call {
 #GET("/config/mapSize")
 #GET("/config/hasWon")
 #GET("/config")
+
+func postPlayer(name : String):
+	_web_request(call.POST_PLAYER, playerName)
+	pass
+
+func getPlayer():
+	_web_request(call.GET_PLAYER, "")
+	pass
+
+func getSurroundings():
+	_web_request(call.GET_SURROUNDINGS, "")
+	pass
+
+func putDirection(dir : String):
+	_web_request(call.PUT_PLAYER_DIRECTION, dir)
+	pass
+
+func putConsume(consume : String):
+	_web_request(call.PUT_PLAYER_CONSUME, consume)
+	pass
+
+func putDiscard(disc : String):
+	_web_request(call.PUT_PLAYER_DISCARD, disc)
+	pass
+
+func putPlay(play : String):
+	_web_request(call.PUT_PLAYER_PLAY, play)
+	pass
 
 func _jsonToDict(response_code, body):
 	if response_code != 200:
@@ -82,11 +110,11 @@ func _web_request(action : call, arg : String):
 	match call:
 		call.POST_PLAYER:
 			web.request_completed.connect(self._postPlayerCompleted.bind(web))
-			web.request(srv+"/player/"+playerName, [], HTTPClient.METHOD_POST, "")
+			web.request(srv+"/player/"+arg, [], HTTPClient.METHOD_POST, "")
 		call.GET_PLAYER:
 			web.request_completed.connect(self._getPlayerCompleted.bind(web))
 			web.request(srvPlayerPrefix, [], HTTPClient.METHOD_GET, "")
-		call.GET_PLAYER_SURROUNDINGS:
+		call.GET_SURROUNDINGS:
 			web.request_completed.connect(self._getPlayerSurroundingsCompleted.bind(web))
 			web.request(srvPlayerPrefix+"/surroundings/"+arg, [], HTTPClient.METHOD_GET, "")
 		call.PUT_PLAYER_DIRECTION:
