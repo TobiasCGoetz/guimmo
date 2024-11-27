@@ -89,6 +89,7 @@ func _cardInput(cardType : String):
 	pass
 
 func _ready():
+	#Setup
 	register_player("Player")
 	tileArray = get_node("rootContainer/Map").get_children()
 	for i in range(len(tileArray)):
@@ -97,6 +98,11 @@ func _ready():
 	cardArray = get_node("rootContainer/Cards").get_children()
 	for i in range(len(cardArray)):
 		cardArray[i].cardInput.connect(_cardInput)
+	
+	#Wire up API signals
+	gApi.getPlayerDone.connect(handleGetPlayerDone)
+	gApi.getSurroundingsDone.connect(handleGetSurroundingsDone)
+	gApi.getConfigDone.connect(handleGetConfigDone)
 	
 	#Regular updates by timer
 	getPlayerTimer = Timer.new()
