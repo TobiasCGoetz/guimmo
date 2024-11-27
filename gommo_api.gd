@@ -3,6 +3,17 @@ extends Node
 @export var serverURL : String = "http://localhost"
 @export var serverPort : int = 8080
 
+enum call {
+	POST_PLAYER,
+	GET_PLAYER,
+	GET_PLAYER_SURROUNDINGS,
+	PUT_PLAYER_DIRECTION,
+	PUT_PLAYER_CONSUME,
+	PUT_PLAYER_DISCARD,
+	PUT_PLAYER_PLAY,
+	GET_CONFIG
+}
+
 #POST("/player/:name")
 #GET("/player/{id}")
 #GET("/player/{id}/surroundings")
@@ -15,15 +26,6 @@ extends Node
 #GET("/config/mapSize")
 #GET("/config/hasWon")
 #GET("/config")
-
-var postPlayer : HTTPRequest
-var getPlayer : HTTPRequest
-var getPlayerSurroundings : HTTPRequest
-var putPlayerDirection : HTTPRequest
-var putPlayerConsume : HTTPRequest
-var putPlayerDiscard : HTTPRequest
-var putPlayerPlay : HTTPRequest
-var getConfig : HTTPRequest
 
 func _postPlayerCompleted(result, response_code, headers, body):
 	pass
@@ -49,15 +51,22 @@ func _putPlayerPlayCompleted(result, response_code, headers, body):
 func _getConfigCompleted(result, response_code, headers, body):
 	pass
 
-func _ready() -> void:
-	postPlayer = HTTPRequest.new()
-	getPlayer = HTTPRequest.new()
-	getPlayerSurroundings = HTTPRequest.new()
-	putPlayerDirection = HTTPRequest.new()
-	putPlayerConsume = HTTPRequest.new()
-	putPlayerDiscard = HTTPRequest.new()
-	putPlayerPlay = HTTPRequest.new()
-	getConfig = HTTPRequest.new()
+func _web_request(action : call, instance : HTTPRequest):
+	var web = HTTPRequest.new()
+	add_child(web)
+	
+	match call:
+		POST_PLAYER:
+			web.request_completed.connect(self._http_request_completed.bind(web))
+		GET_PLAYER:
+		GET_PLAYER_SURROUNDINGS:
+		PUT_PLAYER_DIRECTION:
+		PUT_PLAYER_CONSUME:
+		PUT_PLAYER_DISCARD:
+		PUT_PLAYER_PLAY:
+		GET_CONFIG:
+	
+	instance.queue_free()
 	
 	getPlayer.request_completed.connect(self._postPlayerCompleted)
 	getPlayer.request_completed.connect(self._getPlayerCompleted)
@@ -67,4 +76,11 @@ func _ready() -> void:
 	putPlayerDiscard.request_completed.connect(self._putPlayerDiscardCompleted)
 	putPlayerPlay.request_completed.connect(self._putPlayerPlayCompleted)
 	getConfig.request_completed.connect(self._getConfigCompleted)
+		
+	web.request(serverURL+":"+str(serverPort)+endpoint, [], method, body)
+	pass
+
+func _ready() -> void:
+	
+	
 	pass
