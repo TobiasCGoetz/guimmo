@@ -63,43 +63,50 @@ func _jsonToDict(response_code, body):
 	
 func _postPlayerCompleted(result, response_code, headers, body, instance : HTTPRequest):
 	var response = _jsonToDict(response_code, body)
-	self.playerToken = response
+	self.playerId = response
+	instance.queue_free()
 	pass
 
 func _getPlayerCompleted(result, response_code, headers, body, instance : HTTPRequest):
 	var response = _jsonToDict(response_code, body)
 	getPlayerDone.emit(response["Alive"], response["Cards"], response["Direction"])
+	instance.queue_free()
 	pass
 
 func _getPlayerSurroundingsCompleted(result, response_code, headers, body, instance : HTTPRequest):
 	var response = _jsonToDict(response_code, body)
 	getSurroundingsDone.emit(response)
+	instance.queue_free()
 	pass
 
 func _putPlayerDirectionCompleted(result, response_code, headers, body, instance : HTTPRequest):
+	instance.queue_free()
 	pass
 
 func _putPlayerConsumeCompleted(result, response_code, headers, body, instance : HTTPRequest):
+	instance.queue_free()
 	pass
 
 func _putPlayerDiscardCompleted(result, response_code, headers, body, instance : HTTPRequest):
+	instance.queue_free()
 	pass
 
 func _putPlayerPlayCompleted(result, response_code, headers, body, instance : HTTPRequest):
+	instance.queue_free()
 	pass
 
 func _getConfigCompleted(result, response_code, headers, body, instance : HTTPRequest):
 	var response = _jsonToDict(response_code, body)
 	getConfigDone.emit(response["TurnTime"], response["HaveWon"])
+	instance.queue_free()
 	pass
 
 func _web_request(action : call, arg : String):
-	
 	var srvPlayerPrefix = srv+"/player/"+playerId
 	var web = HTTPRequest.new()
 	add_child(web)
 	
-	match call:
+	match action:
 		call.POST_PLAYER:
 			web.request_completed.connect(self._postPlayerCompleted.bind(web))
 			web.request(srv+"/player/"+arg, [], HTTPClient.METHOD_POST, "")
@@ -124,8 +131,6 @@ func _web_request(action : call, arg : String):
 		call.GET_CONFIG:
 			web.request_completed.connect(self.getConfigCompleted.bind(web))
 			web.request(srv+"/config", [], HTTPClient.METHOD_GET, "")
-	
-	web.queue_free()
 	pass
 
 func _ready() -> void:
