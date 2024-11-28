@@ -119,10 +119,6 @@ func _ready():
 	getConfigTimer.start(getConfigDelta)
 	pass
 
-func set_direction(direction : String):
-	gApi.putDirection(direction)
-	pass
-
 func query_config():
 	gApi.getConfig()
 	pass
