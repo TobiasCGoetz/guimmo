@@ -11,7 +11,7 @@ signal cardInput(cardType : String)
 
 func updateType(inputType : String):
 	self.cardType = inputType
-	print("Updating card with ", self.cardType)
+	#print("Updating card with ", self.cardType)
 	match self.cardType:
 		"Food":
 			self.texture_normal = FoodTexture
