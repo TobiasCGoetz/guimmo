@@ -21,7 +21,7 @@ var tileDict = {
 @export var getConfigDelta : float = 60.0
 var getPlayerTimer : Timer
 var getSurroundingsTimer : Timer
-var getConfigTimer : Timer
+var getConfigTimer : Timer 
 
 var web : HTTPRequest
 
@@ -55,6 +55,8 @@ var inputStringArray = [
 	"SOUTH",
 	"DISABLED"
 ]
+
+@onready var gApi = get_node("gommoApi")
 
 func _http_request_completed(result, response_code, headers, body, action, webInstance):
 	if response_code != 200:
@@ -100,6 +102,7 @@ func _http_request_completed(result, response_code, headers, body, action, webIn
 
 func _moveInput(inputString : String):
 	print("Input sent with '"+inputString+"'")
+	
 	_web_request(
 		HTTPClient.METHOD_PUT,
 		"/player/"+playerToken+"/direction/"+inputString,
