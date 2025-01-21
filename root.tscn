@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://o4s5n31crwtq"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_andfe"]
+[ext_resource type="PackedScene" uid="uid://b2wqft6dcjeq" path="res://scenes/Tile.tscn" id="1_px73o"]
+[ext_resource type="PackedScene" uid="uid://bcwuwo8m0s6x6" path="res://scenes/Card.tscn" id="3_ptgvo"]
+
+[node name="Webmo" type="Node2D"]
+script = ExtResource("1_andfe")
+
+[node name="rootContainer" type="HBoxContainer" parent="."]
+layout_direction = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Map" type="GridContainer" parent="rootContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="NW" parent="rootContainer/Map" instance=ExtResource("1_px73o")]
+layout_mode = 2
+disabled = true
+
+[node name="NN" parent="rootContainer/Map" instance=ExtResource("1_px73o")]
+layout_mode = 2
+
+[node name="NE" parent="rootContainer/Map" instance=ExtResource("1_px73o")]
+layout_mode = 2
+disabled = true
+
+[node name="WW" parent="rootContainer/Map" instance=ExtResource("1_px73o")]
+layout_mode = 2
+
+[node name="CE" parent="rootContainer/Map" instance=ExtResource("1_px73o")]
+layout_mode = 2
+
+[node name="EE" parent="rootContainer/Map" instance=ExtResource("1_px73o")]
+layout_mode = 2
+
+[node name="SW" parent="rootContainer/Map" instance=ExtResource("1_px73o")]
+layout_mode = 2
+disabled = true
+
+[node name="SS" parent="rootContainer/Map" instance=ExtResource("1_px73o")]
+layout_mode = 2
+
+[node name="SE" parent="rootContainer/Map" instance=ExtResource("1_px73o")]
+layout_mode = 2
+disabled = true
+
+[node name="Cards" type="GridContainer" parent="rootContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="Card0" parent="rootContainer/Cards" instance=ExtResource("3_ptgvo")]
+layout_mode = 2
+
+[node name="Card1" parent="rootContainer/Cards" instance=ExtResource("3_ptgvo")]
+layout_mode = 2
+
+[node name="Card2" parent="rootContainer/Cards" instance=ExtResource("3_ptgvo")]
+layout_mode = 2
+
+[node name="Card3" parent="rootContainer/Cards" instance=ExtResource("3_ptgvo")]
+layout_mode = 2

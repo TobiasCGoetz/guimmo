@@ -1,0 +1,219 @@
+[gd_scene load_steps=11 format=3 uid="uid://b2wqft6dcjeq"]
+
+[ext_resource type="Script" path="res://scenes/Tile.gd" id="1_1v8f6"]
+[ext_resource type="Texture2D" uid="uid://cx5ox27oh81gb" path="res://img/arrow.png" id="2_pmye8"]
+[ext_resource type="Texture2D" uid="uid://0pldcspuvrec" path="res://img/forest.jpg" id="2_skcec"]
+[ext_resource type="Texture2D" uid="uid://ce2vpxcavha85" path="res://img/city.jpg" id="3_x4nrx"]
+[ext_resource type="Texture2D" uid="uid://dq2yoplfd5xwu" path="res://img/farm.jpg" id="4_3llaw"]
+[ext_resource type="Texture2D" uid="uid://ceeaton7tik5c" path="res://img/laboratory.png" id="5_hg7na"]
+[ext_resource type="Texture2D" uid="uid://khxja55kgseb" path="res://img/edge.png" id="6_a61g5"]
+[ext_resource type="Texture2D" uid="uid://b8r1pijmsx2og" path="res://img/empty.jpg" id="7_bjwb0"]
+
+[sub_resource type="Gradient" id="Gradient_3yp2x"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.492958, 1)
+colors = PackedColorArray(0.992157, 0.992157, 0, 1, 1, 1, 1, 0, 0.993837, 0.993186, 7.70092e-06, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tvocn"]
+gradient = SubResource("Gradient_3yp2x")
+fill_from = Vector2(0, 0.712389)
+fill_to = Vector2(1, 0.20354)
+
+[node name="Terrain" type="TextureButton"]
+offset_right = 256.0
+offset_bottom = 256.0
+toggle_mode = true
+keep_pressed_outside = true
+texture_normal = ExtResource("6_a61g5")
+texture_pressed = SubResource("GradientTexture2D_tvocn")
+stretch_mode = 6
+script = ExtResource("1_1v8f6")
+
+[node name="NorthArrow" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 128.0
+offset_top = 160.0
+offset_right = 192.0
+offset_bottom = 224.0
+grow_horizontal = 2
+rotation = 3.14159
+texture = ExtResource("2_pmye8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="NorthText" type="Label" parent="NorthArrow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 28.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EastArrow" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -128.0
+offset_right = -28.0
+offset_bottom = -64.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 1.5708
+texture = ExtResource("2_pmye8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="EastText" type="Label" parent="EastArrow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = 18.0
+offset_right = 38.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SouthArrow" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 4.71239
+texture = ExtResource("2_pmye8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SouthText" type="Label" parent="SouthArrow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = -17.0
+offset_right = 68.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WestArrow" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("2_pmye8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="WestText" type="Label" parent="WestArrow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="playerIcon" type="Sprite2D" parent="."]
+
+[node name="playerCount" type="Label" parent="playerIcon"]
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
+
+[node name="zombieIcon" type="Sprite2D" parent="."]
+
+[node name="zombieCount" type="Label" parent="zombieIcon"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ForestTexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_skcec")
+
+[node name="CityTexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_x4nrx")
+
+[node name="FarmTexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_3llaw")
+
+[node name="LaboratoryTexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_hg7na")
+
+[node name="MountainTexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_bjwb0")
+
+[node name="EDGETexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("6_a61g5")
