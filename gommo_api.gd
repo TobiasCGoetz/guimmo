@@ -2,10 +2,10 @@ extends Node
 
 @export var serverURL : String = "http://localhost"
 @export var serverPort : int = 8080
-@export var playerName : String = "player"
 
 var srv = serverURL + ":" + str(serverPort)
 var playerId : String = ""
+var playerToken : String = ""
 
 signal getPlayerDone(alive : bool, cards : Array, direction : String)
 signal getSurroundingsDone(surroundingsDict : Dictionary)
@@ -36,10 +36,11 @@ enum call {
 #GET("/config")
 
 func postPlayer(name : String):
-	_web_request(call.POST_PLAYER, playerName)
+	_web_request(call.POST_PLAYER, name)
 	pass
 
 func getPlayer():
+	print("queryPlayer->playerToken: ", playerToken)
 	_web_request(call.GET_PLAYER, "")
 	pass
 
@@ -63,6 +64,10 @@ func putPlay(play : String):
 	_web_request(call.PUT_PLAYER_PLAY, play)
 	pass
 
+func getConfig():
+	_web_request(call.GET_CONFIG, "")
+	pass
+
 func _jsonToDict(response_code, body):
 	if response_code != 200:
 		return ""
@@ -72,6 +77,7 @@ func _jsonToDict(response_code, body):
 	
 func _postPlayerCompleted(result, response_code, headers, body, instance : HTTPRequest):
 	var response = _jsonToDict(response_code, body)
+	self.playerToken = response
 	pass
 
 func _getPlayerCompleted(result, response_code, headers, body, instance : HTTPRequest):
