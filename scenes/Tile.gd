@@ -105,5 +105,4 @@ func _ready():
 	updatePlayerPlans()
 	updateTerrain()
 	updateData()
-	
 	pass
