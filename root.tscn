@@ -78,5 +78,3 @@ layout_mode = 2
 
 [node name="gommoApi" type="Node" parent="."]
 script = ExtResource("4_b17uu")
-serverURL = null
-serverPort = null
